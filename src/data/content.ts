@@ -48,14 +48,22 @@ export const skillGroups = [
   },
 ] as const
 
-export const projects = [
+export interface Project {
+  title: string
+  stack: readonly string[]
+  description: string
+  repoUrl: string | null
+  demoUrl: string | null
+}
+
+export const projects: readonly Project[] = [
   {
     title: "Attendance Tracker",
     stack: ["Flask", "MySQL"],
     description:
       "A web app for recording and reviewing attendance with a Flask backend and MySQL storage.",
     repoUrl: "https://github.com/Parth-Chouhan/attendance-tracker",
-    demoUrl: "https://your-demo-url.example/attendance-tracker",
+    demoUrl: null,
   },
   {
     title: "URL Shortener",
@@ -63,7 +71,7 @@ export const projects = [
     description:
       "A short-link service that maps custom codes to original URLs and stores them in MySQL.",
     repoUrl: "https://github.com/Parth-Chouhan/URL-Shortener",
-    demoUrl: "https://your-demo-url.example/url-shortener",
+    demoUrl: null,
   },
   {
     title: "Currency Converter",
@@ -71,17 +79,17 @@ export const projects = [
     description:
       "A browser-based converter for translating amounts between currencies using JavaScript.",
     repoUrl: "https://github.com/Parth-Chouhan/Currency-Converter-JS",
-    demoUrl: "https://your-demo-url.example/currency-converter",
+    demoUrl: null,
   },
   {
     title: "HealthBridge AI",
     stack: ["Hackathon", "AI"],
     description:
       "A health-focused hackathon project exploring how AI can support accessible care and information.",
-    repoUrl: "https://github.com/your-username/healthbridge-ai",
-    demoUrl: "https://your-demo-url.example/healthbridge-ai",
+    repoUrl: null,
+    demoUrl: null,
   },
-] as const
+]
 
 export const achievements = [
   {
@@ -96,11 +104,16 @@ export const achievements = [
   },
 ] as const
 
-export const contact = {
+export interface ContactInfo {
+  github: string
+  linkedin: string
+  email: string
+}
+
+export const contact: ContactInfo = {
   github: "https://github.com/Parth-Chouhan",
   linkedin: "https://www.linkedin.com/in/parth-chouhan-8709ab257/",
   email: "parthchouhann@gmail.com",
-  placeholders: true,
 }
 
 export const navLinks = [

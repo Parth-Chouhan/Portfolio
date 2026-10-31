@@ -62,16 +62,11 @@ export function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-foam backdrop-blur-sm transition hover:border-cyan/50 hover:bg-white/10"
+            aria-label="GitHub Profile"
           >
             <GithubIcon size={16} aria-hidden="true" />
             GitHub
           </a>
-        </div>
-
-        {/* Notice for placeholder */}
-        <div className="mt-5 inline-flex items-center gap-2 rounded-lg border border-amber-500/20 bg-amber-500/5 px-3 py-1.5 text-xs text-amber-300/80">
-          <span className="font-semibold text-amber-400">Notice:</span>
-          <span>Social links and contact endpoints are placeholders configured in <code className="font-mono text-cyan/90">src/data/content.ts</code>.</span>
         </div>
       </div>
     </section>

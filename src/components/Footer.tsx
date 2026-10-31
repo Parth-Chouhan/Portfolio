@@ -33,7 +33,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-white/10 bg-white/5 p-2 text-mist hover:text-cyan hover:border-cyan/40 transition"
-              aria-label="GitHub Profile (placeholder)"
+              aria-label="GitHub Profile"
             >
               <GithubIcon size={18} />
             </a>
@@ -42,7 +42,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-white/10 bg-white/5 p-2 text-mist hover:text-cyan hover:border-cyan/40 transition"
-              aria-label="LinkedIn Profile (placeholder)"
+              aria-label="LinkedIn Profile"
             >
               <LinkedinIcon size={18} />
             </a>

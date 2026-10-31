@@ -90,7 +90,7 @@ export function TechTerminal() {
             <span className="text-cyan">about</span>
             <span className="text-mist">Parth&apos;s background, education &amp; philosophy</span>
             <span className="text-cyan">contact</span>
-            <span className="text-mist">Display social links &amp; email placeholders</span>
+            <span className="text-mist">Display social links &amp; contact coordinates</span>
             <span className="text-cyan">whoami</span>
             <span className="text-mist">Display current user session information</span>
             <span className="text-cyan">clear</span>
@@ -158,7 +158,7 @@ export function TechTerminal() {
     } else if (lowerCmd === "projects") {
       outputNode = (
         <div className="space-y-3 font-mono text-xs">
-          <p className="text-cyan font-semibold">Featured Projects Catalog (4 Key Builds):</p>
+          <p className="text-cyan font-semibold">Featured Projects Catalog ({projects.length} Key Builds):</p>
           <div className="grid gap-2">
             {projects.map((proj, idx) => (
               <div key={proj.title} className="rounded-lg border border-white/10 bg-white/5 p-2.5">
@@ -175,8 +175,35 @@ export function TechTerminal() {
                   </div>
                 </div>
                 <p className="text-mist text-[11px] mt-1">{proj.description}</p>
-                <div className="mt-2 flex gap-3 text-[10px] text-foam/60">
-                  <span>Repo: <span className="text-cyan/80 underline">{proj.repoUrl}</span></span>
+                <div className="mt-2 flex flex-wrap gap-3 text-[10px] text-foam/60">
+                  {proj.repoUrl ? (
+                    <span>
+                      Repo:{" "}
+                      <a
+                        href={proj.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-cyan/80 underline hover:text-cyan"
+                      >
+                        {proj.repoUrl}
+                      </a>
+                    </span>
+                  ) : (
+                    <span className="text-mist/70 italic">Repo: Hackathon build (code upon request)</span>
+                  )}
+                  {proj.demoUrl && (
+                    <span>
+                      Demo:{" "}
+                      <a
+                        href={proj.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-cyan/80 underline hover:text-cyan"
+                      >
+                        {proj.demoUrl}
+                      </a>
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
@@ -216,15 +243,40 @@ export function TechTerminal() {
     } else if (lowerCmd === "contact") {
       outputNode = (
         <div className="space-y-2 font-mono text-xs">
-          <p className="text-cyan font-semibold">📬 Contact Coordinates (Configured in src/data/content.ts):</p>
-          <div className="space-y-1 text-mist text-[11px]">
-            <p>• GitHub: <span className="text-foam">{contact.github}</span> (Placeholder)</p>
-            <p>• LinkedIn: <span className="text-foam">{contact.linkedin}</span> (Placeholder)</p>
-            <p>• Email: <span className="text-foam">{contact.email}</span> (Placeholder)</p>
+          <p className="text-cyan font-semibold">📬 Contact Coordinates:</p>
+          <div className="space-y-1.5 text-mist text-[11px]">
+            <p>
+              • GitHub:{" "}
+              <a
+                href={contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foam underline hover:text-cyan"
+              >
+                {contact.github}
+              </a>
+            </p>
+            <p>
+              • LinkedIn:{" "}
+              <a
+                href={contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foam underline hover:text-cyan"
+              >
+                {contact.linkedin}
+              </a>
+            </p>
+            <p>
+              • Email:{" "}
+              <a
+                href={`mailto:${contact.email}`}
+                className="text-foam underline hover:text-cyan"
+              >
+                {contact.email}
+              </a>
+            </p>
           </div>
-          <p className="text-[10px] text-cyan/70 mt-1">
-            ⚠️ Note: Social profiles are placeholders until real URLs are updated.
-          </p>
         </div>
       )
     } else if (lowerCmd === "whoami") {

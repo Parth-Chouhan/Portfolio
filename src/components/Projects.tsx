@@ -1,4 +1,4 @@
-import { ExternalLink, FolderGit2, AlertCircle } from "lucide-react"
+import { ExternalLink, FolderGit2 } from "lucide-react"
 import { projects } from "../data/content"
 import { SectionHeading } from "./SectionHeading"
 import { GithubIcon } from "./Icons"
@@ -11,16 +11,6 @@ export function Projects() {
         title="Software built to solve real problems"
         description="Core portfolio builds spanning backend architectures, client applications, and AI experimentation."
       />
-
-      {/* Global placeholder notice */}
-      <div className="mx-auto mb-10 max-w-2xl rounded-xl border border-amber-500/25 bg-amber-500/8 px-4 py-3 text-xs text-amber-200/90 flex items-start gap-2.5">
-        <AlertCircle size={16} className="text-amber-400 mt-0.5 flex-shrink-0" aria-hidden="true" />
-        <div>
-          <span className="font-semibold text-amber-300">Placeholder Notice: </span>
-          Repository and live demo links below are mock placeholders. Replace them with your actual GitHub and hosted deployment URLs in{" "}
-          <code className="font-mono text-cyan">src/data/content.ts</code> before production release.
-        </div>
-      </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((project) => (
@@ -57,35 +47,61 @@ export function Projects() {
               ))}
             </ul>
 
-            <div className="mt-6 border-t border-white/8 pt-4 flex flex-wrap items-center justify-between gap-3 text-sm">
+            <div className="mt-6 border-t border-white/8 pt-4 flex flex-wrap items-center justify-between gap-3 text-sm min-h-[44px]">
               <div className="flex items-center gap-3">
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 font-medium text-foam hover:text-cyan transition"
-                  aria-label={`${project.title} GitHub repository (placeholder)`}
-                >
-                  <GithubIcon size={14} aria-hidden="true" />
-                  <span>Code</span>
-                  <ExternalLink size={12} className="opacity-70" aria-hidden="true" />
-                </a>
-                <span className="text-white/20">•</span>
-                <a
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 font-medium text-foam hover:text-cyan transition"
-                  aria-label={`${project.title} live demo (placeholder)`}
-                >
-                  <span>Live Demo</span>
-                  <ExternalLink size={12} className="opacity-70" aria-hidden="true" />
-                </a>
+                {project.repoUrl && (
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-medium text-foam hover:text-cyan transition"
+                    aria-label={`${project.title} GitHub repository`}
+                  >
+                    <GithubIcon size={14} aria-hidden="true" />
+                    <span>Code</span>
+                    <ExternalLink size={12} className="opacity-70" aria-hidden="true" />
+                  </a>
+                )}
+
+                {project.repoUrl && project.demoUrl && (
+                  <span className="text-white/20">•</span>
+                )}
+
+                {project.demoUrl && (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-medium text-foam hover:text-cyan transition"
+                    aria-label={`${project.title} live demo`}
+                  >
+                    <span>Live Demo</span>
+                    <ExternalLink size={12} className="opacity-70" aria-hidden="true" />
+                  </a>
+                )}
+
+                {!project.repoUrl && !project.demoUrl && (
+                  <span className="text-xs text-mist/70 font-mono">
+                    Hackathon prototype · Details available upon request
+                  </span>
+                )}
               </div>
 
-              <span className="rounded bg-amber-500/10 px-2 py-0.5 text-[10px] font-mono text-amber-300 border border-amber-500/20">
-                Placeholder Link
-              </span>
+              {project.repoUrl && (
+                <span className="rounded bg-white/5 px-2 py-0.5 text-[10px] font-mono text-mist/70 border border-white/10">
+                  Open Source
+                </span>
+              )}
+              {!project.repoUrl && project.demoUrl && (
+                <span className="rounded bg-cyan/10 px-2 py-0.5 text-[10px] font-mono text-cyan/90 border border-cyan/20">
+                  Live Demo
+                </span>
+              )}
+              {!project.repoUrl && !project.demoUrl && (
+                <span className="rounded bg-violet/10 px-2 py-0.5 text-[10px] font-mono text-violet/90 border border-violet/20">
+                  Hackathon Build
+                </span>
+              )}
             </div>
           </article>
         ))}
